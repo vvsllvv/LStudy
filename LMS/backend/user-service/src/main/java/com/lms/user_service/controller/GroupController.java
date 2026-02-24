@@ -19,13 +19,11 @@ public class GroupController {
     private final GroupService groupService;
 
     @GetMapping("/{id}")
-    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<GroupDto> readGroup(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(groupService.readGroup(id));
     }
 
     @PostMapping("/{id}/add")
-    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<GroupDto> addUserToGroup(@PathVariable("id") Long id,
                                                    @RequestBody List<Long> userIds) {
         return ResponseEntity.ok().body(groupService.addUserToGroup(id, userIds));

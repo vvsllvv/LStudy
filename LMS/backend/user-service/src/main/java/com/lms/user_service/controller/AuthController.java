@@ -21,22 +21,18 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/registration")
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<String> createUser(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<?> createUser(@RequestBody RegisterDto registerDto) {
         authService.createUser(registerDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("User is created.");
     }
 
     @GetMapping("/login")
-    @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseDto> signIn(@RequestBody LoginDto loginDto) {
-
         ResponseDto responseDTO = authService.loginUser(loginDto);
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
-    @PostMapping("/refresh")
-    @ExceptionHandler(AuthenticationException.class)
+    @GetMapping("/refresh")
     public ResponseEntity<ResponseDto> refreshToken(@RequestBody RefreshTokenDto refreshTokenDTO) throws Exception {
         return ResponseEntity.ok(authService.refreshToken(refreshTokenDTO));
     }

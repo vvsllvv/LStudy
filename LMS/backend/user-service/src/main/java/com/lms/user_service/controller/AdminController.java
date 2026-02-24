@@ -15,22 +15,18 @@ public class AdminController {
     private final AdminService adminService;
 
     @DeleteMapping("/{id}/delete")
-    @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
         adminService.deleteUser(id);
         return ResponseEntity.ok().body("The user is deleted.");
     }
 
-    @PostMapping("/{id}/rights")
-    @ExceptionHandler(UsernameNotFoundException.class)
+    @PatchMapping("/{id}/rights")
     public ResponseEntity<?> rightUser(@PathVariable("id") Long id) {
         adminService.changeRightsUser(id);
         return ResponseEntity.ok().body("User rights are changed.");
     }
 
-    @PostMapping("/{id}/role")
-    @ResponseStatus(HttpStatus.OK)
-    @ExceptionHandler(UsernameNotFoundException.class)
+    @PatchMapping("/{id}/role")
     public ResponseEntity<?> changeRoleTo(@PathVariable("id") Long id,
                                           @RequestBody UserRole role) {
         adminService.changeRoleTo(id, role);

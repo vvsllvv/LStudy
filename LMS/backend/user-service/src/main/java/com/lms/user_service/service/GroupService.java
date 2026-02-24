@@ -31,11 +31,16 @@ public class GroupService {
         return new GroupDto(group.getId(), group.getUsers().stream().map(u -> userMapper.toProfileDto(u)).toList());
     }
 
-    public GroupDto addUserToGroup(Long id, List<Long> users) {
+    public GroupDto addUserToGroup(Long id, List<Long> ids) {
         Group group = groupRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Group with this id was not found."));
 
-        group.getUsers().addAll(users.stream().map(u -> userRepository.findById(u)
+        // исключает пользователей, которые уже в группе?
+        List<Long> result = ids.stream()
+                .filter(i -> !group.getUsers().stream().map(u -> u.getId()).toList().contains(i))
+                .collect(Collectors.toList());
+
+        group.getUsers().addAll(result.stream().map(u -> userRepository.findById(u)
                 .orElseThrow(() -> new UsernameNotFoundException("Not valid."))).collect(Collectors.toList()));
 
         return groupMapper.toGroupDto(group);

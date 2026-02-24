@@ -40,7 +40,7 @@ public class AuthService {
 
     public void createUser(RegisterDto registerDto) {
         if (userRepository.findByEmail(registerDto.email()).isPresent())
-            throw new UserAlreadyExistsException("User with that email exists.");
+            throw new UserAlreadyExistsException("User with that email already exists.");
 
         User user = userMapper.toUserEntity(registerDto);
 

@@ -16,7 +16,6 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/profile")
-    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ProfileDto> showProfile() {
         return ResponseEntity.ok(userService.showProfile());
     }
