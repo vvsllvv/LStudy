@@ -1,12 +1,12 @@
 package com.lms.course_service.repository;
 
-import com.lms.course_service.entity.Theme;
+import com.lms.course_service.entity.Attempt;
 import com.lms.course_service.repository.base.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ThemeRepository extends BaseRepository<Theme> {
-    List<Theme> findAllByCourseId(Long id);
+public interface AttemptRepository extends BaseRepository<Attempt> {
+    List<Attempt> findAllByUserId(Long id);
 }

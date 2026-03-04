@@ -38,4 +38,6 @@ public class Test {
     @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
     private List<Question> questions;
 
+    @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+    private List<Attempt> attempts;
 }

@@ -1,10 +1,13 @@
 package com.lms.course_service.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "answers")
@@ -27,4 +30,10 @@ public class Answer {
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
+    @ManyToMany
+    @JoinTable(
+            name = "attempts_answers",
+            joinColumns = @JoinColumn(name = "answer_id"),
+            inverseJoinColumns = @JoinColumn(name = "attempt_id"))
+    private List<Attempt> attempts;
 }

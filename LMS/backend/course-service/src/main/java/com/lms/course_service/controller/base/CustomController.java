@@ -76,4 +76,14 @@ public abstract class CustomController <ENTITY, DTO> {
         }
     }
 
+//    @GetMapping("/{id}/all")
+//    public ResponseEntity<?> readAllByParentId(Long id) {
+//        try {
+//            return ResponseEntity.status(HttpStatus.CREATED).body(service.readAll(id));
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong.");
+//        }
+//    }
+
 }

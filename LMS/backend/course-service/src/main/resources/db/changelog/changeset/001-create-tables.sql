@@ -66,3 +66,22 @@ CREATE TABLE answers (
 );
 
 
+CREATE TABLE attempts (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    test_id BIGINT NOT NULL,
+    score FLOAT,
+    time_taken INTEGER NOT NULL,
+    finished_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (test_id) REFERENCES tests(id)
+);
+
+CREATE TABLE attempts_answers (
+    attempt_id BIGINT NOT NULL,
+    answer_id BIGINT NOT NULL,
+
+    FOREIGN KEY (attempt_id) REFERENCES attempts(id),
+    FOREIGN KEY (answer_id) REFERENCES answers(id)
+);
+

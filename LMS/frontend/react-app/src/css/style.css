@@ -1,0 +1,74 @@
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: rgb(217, 241, 241);
+    margin: 0;
+    padding: 0;
+}
+
+.modules-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.modules-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1e293b;
+    position: relative;
+}
+
+.modules-container hr {
+    background-color: #000000;
+    margin: 1rem;
+}
+
+.module-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.module-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.module-card h3 {
+    color: #0f172a;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.module-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.module-card h4 {
+    color: #334155;
+    margin: 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.modules-container > div:empty::before {
+    content: 'Нет доступных модулей';
+    display: block;
+    text-align: center;
+    padding: 3rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    color: #64748b;
+    border: 2px dashed #cbd5e1;
+}

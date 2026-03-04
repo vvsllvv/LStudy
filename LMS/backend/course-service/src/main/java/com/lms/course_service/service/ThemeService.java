@@ -28,6 +28,7 @@ public class ThemeService extends CustomService<Theme, ThemeDto> {
         super(themeRepository, themeMapper);
     }
 
+    @Override
     public void create(Long id, ThemeDto themeDto) {
         Theme theme = Theme.builder()
                 .title(themeDto.title())
@@ -50,7 +51,7 @@ public class ThemeService extends CustomService<Theme, ThemeDto> {
     }
 
     public List<ThemeDto> readAllById(Long id) {
-        List<Theme> allThemes = themeRepository.findAll();
+        List<Theme> allThemes = themeRepository.findAllByCourseId(id);
         return themeMapper.toDto(allThemes);
     }
 }

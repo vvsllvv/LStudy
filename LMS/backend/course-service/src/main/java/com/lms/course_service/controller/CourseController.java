@@ -18,5 +18,4 @@ public class CourseController extends CustomController<Course, CourseDto> {
         super(courseService);
     }
 
-
 }
