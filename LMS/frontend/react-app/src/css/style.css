@@ -1,17 +1,27 @@
 body {
     font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: rgb(217, 241, 241);
+    background-color: #d9f1f1;
     margin: 0;
     padding: 0;
 }
 
-.modules-container {
+.modules-container,
+.test-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-.modules-container h2 {
+.course-link {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    padding: 0.5rem 3.5rem;
+    color: #000000;
+    font-size: medium;
+}
+
+h2 {
     text-align: center;
     font-size: 2rem;
     color: #1e293b;
@@ -71,4 +81,201 @@ body {
     border-radius: 12px;
     color: #64748b;
     border: 2px dashed #cbd5e1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.themes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.theme-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 20px 40px #0000001a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.theme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 50px rgba(0, 50, 70, 0.192);
+}
+
+.theme-card h3 {
+    font-size: 1.8rem;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.theme-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.paragraph-links,
+.test-links,
+.course-link {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #ffffff;
+    backdrop-filter: blur(10px);
+}
+
+.paragraph-links {
+    border-left: 4px solid #4cd137;
+}
+
+.test-links {
+    border-left: 4px solid #fbc531;
+}
+
+.paragraph-link,
+.test-link,
+.course-link {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.paragraph-link:hover,
+.test-link:hover,
+.course-link:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.paragraph-link h4,
+.test-link h4,
+.course-link h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.paragraph-link {
+    color: #2d4900;
+}
+
+.test-link {
+    color: #b16100;
+}
+
+
+
+
+
+
+
+.paragraph-container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paragraph-container:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.paragraph-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #1a202c;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #e2e8f0;
+    position: relative;
+}
+
+.paragraph-content {
+    font-size: 1.2rem;
+    color: #4a5568;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.paragraph-content p {
+    margin-bottom: 1.5rem;
+}
+
+.paragraph-content blockquote {
+    margin: 25px 0;
+    padding: 20px 25px;
+    background: #f7fafc;
+    border-left: 4px solid #4299e1;
+    border-radius: 4px;
+    font-style: italic;
+    color: #2d3748;
+}
+
+.paragraph-content code {
+    background: #edf2f7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #2b6cb0;
+}
+
+.paragraph-content ul, 
+.paragraph-content ol {
+    margin: 20px 0;
+    padding-left: 30px;
+}
+
+.paragraph-content li {
+    margin-bottom: 8px;
 }

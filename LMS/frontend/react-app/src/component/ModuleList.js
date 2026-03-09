@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import { BASE_URL, GET_ALL_MODULES } from '../urls';
+import { BASE_URL, MODULE, COURSE, ALL, DELETE } from '../urls';
 
 const ModuleList = () => {
     const [modules, setModules] = useState([]);
     
-    async function getAllModules() {
-        await axios.get(BASE_URL + GET_ALL_MODULES).then((response) => {
+    function getAllModules() {
+        axios.get(BASE_URL + MODULE + ALL).then((response) => {
                 console.log(response);
                 setModules(response.data);
             },
@@ -18,11 +18,31 @@ const ModuleList = () => {
         );
     }
 
+    function handleCourseDelete(id) {
+        axios.delete(BASE_URL + COURSE + id + "/" + DELETE).then(
+            getAllModules()
+        ).catch(
+            (error) => {
+                console.log(error);
+                console.log(error.response);
+            }
+        );
+    }
+
+    function handleModuleDelete(id) {
+        axios.delete(BASE_URL + MODULE + id + "/" + DELETE).then(
+            getAllModules()
+        ).catch(
+            (error) => {
+                console.log(error);
+                console.log(error.response);
+            }
+        );
+    }
 
     useEffect(() => {
         getAllModules();
         }, []);
-
 
     return (
         <div className="modules-container">
@@ -32,14 +52,25 @@ const ModuleList = () => {
                     <div key={module.id} className="module-card">
                         <h3>{module.title}</h3>
                     
-                        {module.courses.map(course => (
-                                
-                            <Link key={course.id} to={`/course/${course.id}`} className="course-link">
+                    {module.courses.map(course => (
+                        <div key={course.id} >    
+                            <Link to={`/course/${course.id}`} className="course-link">
                                 <h4>{course.title}</h4>          
                             </Link>
+
+                                
+                            <button type="submit" className="delete-btn" onClick={() => handleCourseDelete(course.id)}>
+                                Удалить
+                            </button>
+                        </div>      
                         ))
 
+                        
                     }
+
+                        <button type="submit" className="delete-btn" onClick={() => handleModuleDelete(module.id)}>
+                            Удалить
+                        </button>
                     </div>   
                 ))
                 }

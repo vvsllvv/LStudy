@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from "axios";
-import { BASE_URL, GET_PARAGRAPH } from '../../urls';
+import { BASE_URL, PARAGRAPH } from '../../urls';
 
-const ParagraphPage = (param) => {
+const ParagraphPage = (params) => {
     const [paragraph, setParagraph] = useState([]);
+    const { paragraphId } = useParams(); 
 
     function getParagraph(id) {
-        axios.get(BASE_URL + GET_PARAGRAPH + id).then((response) => {
+        axios.get(BASE_URL + PARAGRAPH + id).then((response) => {
                 console.log(response);
                 setParagraph(response.data);
             }).catch((error) => {
@@ -17,15 +19,15 @@ const ParagraphPage = (param) => {
     }
 
     useEffect(() => {
-        getParagraph();
-    }, []);
+        getParagraph(paragraphId);
+    }, [paragraphId]);
 
 
   return(
-        <div className="container">
-            <h2>{paragraph.id}</h2>
+        <div className="paragraph-container">
+            <h2>{paragraph.title}</h2>
 
-            <p>{paragraph.content}</p>
+            <p className="paragraph-content">{paragraph.content}</p>
         </div>
   );
 
