@@ -2,8 +2,10 @@ import axios from "axios";
 import { BASE_URL, PARAGRAPH, CREATE } from "../../urls";
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CreateParagraoh = () => {
+    const navigate = useNavigate();
     const { themeId } = useParams();
     const [paragraph, setParagraph] = useState({
         title: '',

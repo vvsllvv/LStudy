@@ -34,4 +34,14 @@ public class AdminController {
 
     }
 
+    @GetMapping("/users")
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok().body(adminService.getAllUsers());
+    }
+
+//    @GetMapping("/user/{id}")
+//    @PatchMapping("/{id}/role")
+//    public ResponseEntity<?> getUser(@PathVariable("id") Long id) {
+//        return ResponseEntity.ok().body();
+//    }
 }

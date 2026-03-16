@@ -67,6 +67,9 @@ const ModuleList = () => {
 
                         
                     }
+                        <Link to={`/course/${module.id}/create`}>
+                            <h4>создать курс</h4>          
+                        </Link>
 
                         <button type="submit" className="delete-btn" onClick={() => handleModuleDelete(module.id)}>
                             Удалить
@@ -75,6 +78,10 @@ const ModuleList = () => {
                 ))
                 }
             </div>
+
+            <Link to={`/module/create`} className="create-link">
+                <h4>cоздать </h4>          
+            </Link>
         </div>
     )
 };

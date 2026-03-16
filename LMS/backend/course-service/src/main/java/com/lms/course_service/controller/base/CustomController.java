@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 public abstract class CustomController <ENTITY, DTO> {
 
     protected final CustomService<ENTITY, DTO> service;
@@ -36,9 +36,11 @@ public abstract class CustomController <ENTITY, DTO> {
     @PostMapping("{id}/create")
     public ResponseEntity<?> create(@PathVariable Long id, @RequestBody DTO dto) {
         try {
+            log.info("Long id = {}", id);
             service.create(id, dto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Object is created.");
         } catch (Exception e) {
+            log.info("Long id = {}", id);
             log.error(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong.");
         }

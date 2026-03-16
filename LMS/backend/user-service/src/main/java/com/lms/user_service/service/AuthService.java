@@ -77,6 +77,11 @@ public class AuthService {
         }
         throw new AuthenticationException("Invalid refresh token");
     }
+
+    public void validateToken(String token) {
+        jwtService.validateJwtToken(token);
+        log.info("User is validated.");
+    }
 }
 
 //        Authentication authentication = authenticationManager

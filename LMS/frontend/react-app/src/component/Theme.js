@@ -98,6 +98,10 @@ const Theme = (params) => {
                 </div>   
              ))
             }
+
+            <Link to={`/theme/${courseId}/create`}>
+                <h4>создать тему</h4>          
+            </Link>
         </div>
     );
 }

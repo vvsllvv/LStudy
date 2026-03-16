@@ -1,18 +1,25 @@
 package com.lms.user_service.service;
 
+import com.lms.user_service.dto.ProfileDto;
+import com.lms.user_service.dto.UserDto;
 import com.lms.user_service.entity.User;
 import com.lms.user_service.entity.enums.UserRole;
+import com.lms.user_service.mapper.UserMapper;
 import com.lms.user_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class AdminService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     public void deleteUser(Long id) {
         if(!userRepository.existsById(id))
@@ -48,6 +55,11 @@ public class AdminService {
 
         user.setRole(role);
         userRepository.save(user);
+    }
+
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll().stream().map(
+                u -> userMapper.toUserDto(u)).collect(Collectors.toList());
     }
 }
 

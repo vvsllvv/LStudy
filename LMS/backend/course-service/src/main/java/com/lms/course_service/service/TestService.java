@@ -9,7 +9,6 @@ import com.lms.course_service.entity.Question;
 import com.lms.course_service.entity.Test;
 import com.lms.course_service.exception.NotFoundException;
 import com.lms.course_service.mapper.AttemptMapper;
-import com.lms.course_service.mapper.AttemptMapperImpl;
 import com.lms.course_service.mapper.QuestionMapper;
 import com.lms.course_service.mapper.TestMapper;
 import com.lms.course_service.repository.AnswerRepository;
@@ -51,6 +50,7 @@ public class TestService extends CustomService<Test, TestDto> {
     }
 
     public void create(Long id, TestDto testDto) {
+
         Test test = Test.builder()
                 .title(testDto.title())
                 .active(testDto.active())
@@ -64,7 +64,7 @@ public class TestService extends CustomService<Test, TestDto> {
 
         testDto.questions().forEach(q -> questionService.create(testId, q));
 
-        log.info("Test with id = {} is built.", id);
+        log.info("Test is built.");
     }
 
     @Override

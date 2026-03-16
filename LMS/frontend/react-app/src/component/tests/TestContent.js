@@ -39,12 +39,12 @@ const TestContent = (params) => {
             <div className="test-questions">
 
                 
-                {test.questions?.map((question, index) => (
-                    <Question
-                        key={question.id}
-                        question={question}
-                        index={index}
-                    />
+                {test.questions?.map((question, indexQ) => (
+                        <Question
+                            key={question.id}
+                            question={question}
+                            index={indexQ}
+                        />
                 ))}
             </div>
 

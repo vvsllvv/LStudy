@@ -3,7 +3,6 @@ package com.lms.course_service.controller;
 import com.lms.course_service.controller.base.CustomController;
 import com.lms.course_service.dto.AttemptDto;
 import com.lms.course_service.dto.TestDto;
-import com.lms.course_service.entity.Attempt;
 import com.lms.course_service.entity.Test;
 import com.lms.course_service.service.TestService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,4 +35,5 @@ public class TestController extends CustomController<Test, TestDto> {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong.");
         }
     }
+
 }
