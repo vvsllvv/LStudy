@@ -3,11 +3,17 @@ import { BASE_URL, TEST, CREATE } from "../../urls";
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import AuthContext from "../context/AuthContext";
 
 const CreateTest = () => {
     const navigate = useNavigate();
     const { auth, logout } = useContext(AuthContext);
+=======
+
+const CreateTest = () => {
+    const navigate = useNavigate();
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
     const { themeId } = useParams();
     const [test, setTest] = useState({
         title: '',
@@ -124,6 +130,7 @@ const CreateTest = () => {
         console.log(submitData);
 
 
+<<<<<<< HEAD
         axios.post(BASE_URL + TEST + id + "/" + CREATE, submitData,
         {
             headers: {
@@ -131,6 +138,9 @@ const CreateTest = () => {
         }}).then(
             navigate(-1)
         )
+=======
+        axios.post(BASE_URL + TEST + id + "/" + CREATE, submitData)
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
         .catch((error) => {
                 console.log(error);
                 console.log(error.response);

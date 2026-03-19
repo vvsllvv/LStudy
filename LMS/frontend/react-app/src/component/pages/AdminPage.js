@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from "axios"
 import { BASE_URL, ALL, ADMIN, DELETE, RIGHTS, ROLE } from "../../urls"
 import { useContext, useEffect, useState } from "react";
@@ -171,3 +172,9 @@ export default AdminPage;
 
                             <button type="submit">Изменить роль</button>
                         </form> */}
+=======
+
+const AdminPage = () => {
+    
+}
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1

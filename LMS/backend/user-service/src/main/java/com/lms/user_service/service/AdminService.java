@@ -57,9 +57,15 @@ public class AdminService {
         userRepository.save(user);
     }
 
+<<<<<<< HEAD
     public List<ProfileDto> getAllUsers() {
         return userRepository.findAll().stream().map(
                 u -> userMapper.toProfileDto(u)).collect(Collectors.toList());
+=======
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll().stream().map(
+                u -> userMapper.toUserDto(u)).collect(Collectors.toList());
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
     }
 }
 

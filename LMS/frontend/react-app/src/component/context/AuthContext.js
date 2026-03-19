@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import {createContext, useState, useEffect } from "react";
+=======
+import { useContext, createContext, useState, userCallback } from "react";
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
+<<<<<<< HEAD
     const [auth, setAuth] = useState({
         token: '',
         refreshToken: '',
@@ -47,6 +52,12 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{ auth, setAuth: updateAuth, logout }}>
+=======
+    const [auth, setAuth] = useState({});
+
+    return (
+        <AuthContext.Provider value={{ auth, setAuth }}>
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
             {children}
         </AuthContext.Provider>
     )

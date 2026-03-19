@@ -81,7 +81,10 @@ const ModuleList = () => {
 
                         
                     }
+<<<<<<< HEAD
                     
+=======
+>>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
                         <Link to={`/course/${module.id}/create`}>
                             <h4>создать курс</h4>          
                         </Link>
