@@ -26,7 +26,7 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User is created.");
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<ResponseDto> signIn(@RequestBody LoginDto loginDto) {
         ResponseDto responseDTO = authService.loginUser(loginDto);
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
@@ -35,6 +35,17 @@ public class AuthController {
     @GetMapping("/refresh")
     public ResponseEntity<ResponseDto> refreshToken(@RequestBody RefreshTokenDto refreshTokenDTO) throws Exception {
         return ResponseEntity.ok(authService.refreshToken(refreshTokenDTO));
+    }
+
+    @GetMapping("/validate")
+    public String validateToken(@RequestParam("token") String token) {
+        authService.validateToken(token);
+        return "Token is valid";
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello.";
     }
 
 }

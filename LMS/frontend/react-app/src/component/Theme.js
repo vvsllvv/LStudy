@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { BASE_URL, THEME, ALL, PARAGRAPH, TEST, DELETE } from '../urls';
 import { Link } from 'react-router-dom';
+import AuthContext from './context/AuthContext';
 
 const Theme = (params) => {
     const [themes, setThemes] = useState([]);
-    const { courseId } = useParams(); 
+    const { courseId } = useParams();
+    const { auth } = useContext(AuthContext);
 
     function getAllCourseThemes(id) {
-        axios.get(BASE_URL + THEME + id + "/" + ALL).then((response) => {
+        axios.get(BASE_URL + THEME + id + "/" + ALL, {
+                headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+            }).then((response) => {
                 console.log(response);
                 setThemes(response.data);
             },
@@ -21,7 +27,11 @@ const Theme = (params) => {
     }
 
     function handleParagraphDelete(id) {
-        axios.delete(BASE_URL + PARAGRAPH + id + "/" + DELETE).then(() => {
+        axios.delete(BASE_URL + PARAGRAPH + id + "/" + DELETE, {
+                headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+            }).then(() => {
             getAllCourseThemes(courseId);
         }).catch(
             (error) => {
@@ -32,7 +42,11 @@ const Theme = (params) => {
     }
 
     function handleTestDelete(id) {
-        axios.delete(BASE_URL + TEST + id + "/" + DELETE).then(
+        axios.delete(BASE_URL + TEST + id + "/" + DELETE, {
+                headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+            }).then(
             getAllCourseThemes(courseId)
         ).catch(
             (error) => {
@@ -98,6 +112,10 @@ const Theme = (params) => {
                 </div>   
              ))
             }
+
+            <Link to={`/theme/${courseId}/create`}>
+                <h4>создать тему</h4>          
+            </Link>
         </div>
     );
 }

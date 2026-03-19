@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { BASE_URL, PARAGRAPH } from '../../urls';
+import AuthContext from '../context/AuthContext';
 
 const ParagraphPage = (params) => {
     const [paragraph, setParagraph] = useState([]);
-    const { paragraphId } = useParams(); 
+    const { paragraphId } = useParams();
+    const { auth } = useContext(AuthContext);
 
     function getParagraph(id) {
-        axios.get(BASE_URL + PARAGRAPH + id).then((response) => {
+        axios.get(BASE_URL + PARAGRAPH + id, {
+            headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+        }).then((response) => {
                 console.log(response);
                 setParagraph(response.data);
             }).catch((error) => {

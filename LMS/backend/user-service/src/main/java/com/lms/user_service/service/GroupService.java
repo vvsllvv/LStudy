@@ -28,7 +28,8 @@ public class GroupService {
         Group group = groupRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Group with this id was not found."));
 
-        return new GroupDto(group.getId(), group.getUsers().stream().map(u -> userMapper.toProfileDto(u)).toList());
+        return new GroupDto(group.getId(), group.getUsers().stream().map(
+                u -> userMapper.toProfileDto(u)).toList());
     }
 
     public GroupDto addUserToGroup(Long id, List<Long> ids) {

@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { BASE_URL, MODULE, COURSE, ALL, DELETE } from '../urls';
+import AuthContext from './context/AuthContext';
 
 const ModuleList = () => {
     const [modules, setModules] = useState([]);
+    const { auth } = useContext(AuthContext);
     
     function getAllModules() {
-        axios.get(BASE_URL + MODULE + ALL).then((response) => {
+        axios.get(BASE_URL + MODULE + ALL, {
+            headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+        }).then((response) => {
                 console.log(response);
                 setModules(response.data);
             },
@@ -19,7 +25,11 @@ const ModuleList = () => {
     }
 
     function handleCourseDelete(id) {
-        axios.delete(BASE_URL + COURSE + id + "/" + DELETE).then(
+        axios.delete(BASE_URL + COURSE + id + "/" + DELETE, {
+            headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+        }).then(
             getAllModules()
         ).catch(
             (error) => {
@@ -30,7 +40,11 @@ const ModuleList = () => {
     }
 
     function handleModuleDelete(id) {
-        axios.delete(BASE_URL + MODULE + id + "/" + DELETE).then(
+        axios.delete(BASE_URL + MODULE + id + "/" + DELETE, {
+            headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+        }).then(
             getAllModules()
         ).catch(
             (error) => {
@@ -67,14 +81,22 @@ const ModuleList = () => {
 
                         
                     }
+                    
+                        <Link to={`/course/${module.id}/create`}>
+                            <h4>создать курс</h4>          
+                        </Link>
 
                         <button type="submit" className="delete-btn" onClick={() => handleModuleDelete(module.id)}>
                             Удалить
                         </button>
-                    </div>   
+                    </div>
                 ))
                 }
             </div>
+
+            <Link to={`/module/create`} className="create-link">
+                <h4>cоздать </h4>          
+            </Link>
         </div>
     )
 };

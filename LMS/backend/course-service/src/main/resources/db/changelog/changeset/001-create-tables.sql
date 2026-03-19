@@ -8,7 +8,7 @@ CREATE TABLE courses (
     title VARCHAR(255) NOT NULL,
     module_id BIGINT NOT NULL,
 
-    FOREIGN KEY (module_id) REFERENCES courses(id)
+    FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
 );
 
 CREATE TABLE themes (
@@ -16,7 +16,7 @@ CREATE TABLE themes (
     title VARCHAR(255) NOT NULL,
     course_id BIGINT NOT NULL,
 
-    FOREIGN KEY (course_id) REFERENCES courses(id)
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
 CREATE TABLE paragraphs (
@@ -25,7 +25,7 @@ CREATE TABLE paragraphs (
     content TEXT,
     theme_id BIGINT NOT NULL,
 
-    FOREIGN KEY (theme_id) REFERENCES themes(id)
+    FOREIGN KEY (theme_id) REFERENCES themes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE documents (
@@ -34,7 +34,7 @@ CREATE TABLE documents (
     path VARCHAR(255) NOT NULL,
     theme_id BIGINT NOT NULL,
 
-    FOREIGN KEY (theme_id) REFERENCES themes(id)
+    FOREIGN KEY (theme_id) REFERENCES themes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE tests (
@@ -44,7 +44,7 @@ CREATE TABLE tests (
     timeout SERIAL,
     theme_id BIGINT NOT NULL,
 
-    FOREIGN KEY (theme_id) REFERENCES themes(id)
+    FOREIGN KEY (theme_id) REFERENCES themes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE questions (
@@ -53,7 +53,7 @@ CREATE TABLE questions (
     method VARCHAR(15) NOT NULL,
     test_id BIGINT NOT NULL,
 
-    FOREIGN KEY (test_id) REFERENCES tests(id)
+    FOREIGN KEY (test_id) REFERENCES tests(id) ON DELETE CASCADE
 );
 
 CREATE TABLE answers (
@@ -62,7 +62,7 @@ CREATE TABLE answers (
     is_right BOOLEAN NOT NULL,
     question_id BIGINT NOT NULL,
 
-    FOREIGN KEY (question_id) REFERENCES questions(id)
+    FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
 );
 
 
@@ -74,7 +74,7 @@ CREATE TABLE attempts (
     time_taken INTEGER NOT NULL,
     finished_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (test_id) REFERENCES tests(id)
+    FOREIGN KEY (test_id) REFERENCES tests(id) ON DELETE CASCADE
 );
 
 CREATE TABLE attempts_answers (
@@ -82,6 +82,6 @@ CREATE TABLE attempts_answers (
     answer_id BIGINT NOT NULL,
 
     FOREIGN KEY (attempt_id) REFERENCES attempts(id),
-    FOREIGN KEY (answer_id) REFERENCES answers(id)
+    FOREIGN KEY (answer_id) REFERENCES answers(id) ON DELETE CASCADE
 );
 

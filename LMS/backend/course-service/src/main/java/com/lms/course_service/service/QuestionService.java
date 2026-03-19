@@ -37,6 +37,7 @@ public class QuestionService extends CustomService<Question, QuestionDto> {
     }
 
     public void create(Long id, QuestionDto questionDto) {
+
         Question question = Question.builder()
                 .description(questionDto.description())
                 .method(questionDto.method())
@@ -44,9 +45,9 @@ public class QuestionService extends CustomService<Question, QuestionDto> {
                 .build();
 
         questionRepository.save(question);
-        log.info("Question is created.");
 
-        questionDto.answer().forEach(a -> answerService.create(question.getId(), a));
+        questionDto.answers().forEach(a -> answerService.create(question.getId(), a));
+        log.info("Question is created.");
     }
 
     @Override
@@ -60,8 +61,8 @@ public class QuestionService extends CustomService<Question, QuestionDto> {
         if (questionDto.method() != null)
             question.setMethod(questionDto.method());
 
-        if (questionDto.answer() != null) {
-            List<Answer> newAnswers = answerMapper.toEntity(questionDto.answer());
+        if (questionDto.answers() != null) {
+            List<Answer> newAnswers = answerMapper.toEntity(questionDto.answers());
             question.getAnswer().addAll(newAnswers);
         }
 

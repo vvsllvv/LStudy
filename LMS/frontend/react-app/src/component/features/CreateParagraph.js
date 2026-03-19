@@ -1,18 +1,28 @@
 import axios from "axios";
 import { BASE_URL, PARAGRAPH, CREATE } from "../../urls";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from "../context/AuthContext";
 
 const CreateParagraoh = () => {
+    const navigate = useNavigate();
     const { themeId } = useParams();
+    const { auth, logout } = useContext(AuthContext);
     const [paragraph, setParagraph] = useState({
         title: '',
         content: ''
     });
 
     function createParagraph(id) {
-        axios.post(BASE_URL + PARAGRAPH + id + "/" + CREATE, paragraph)
-        .then()
+        axios.post(BASE_URL + PARAGRAPH + id + "/" + CREATE, paragraph,
+        {
+            headers: {
+            'Authorization': `Bearer ${auth.token}`
+        }})
+        .then(
+            navigate(-1)
+        )
         .catch((error) => {
             console.log(error);
             console.log(error.response);

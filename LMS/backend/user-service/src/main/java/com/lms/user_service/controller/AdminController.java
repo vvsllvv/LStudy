@@ -20,7 +20,7 @@ public class AdminController {
         return ResponseEntity.ok().body("The user is deleted.");
     }
 
-    @PatchMapping("/{id}/rights")
+    @GetMapping("/{id}/rights")
     public ResponseEntity<?> rightUser(@PathVariable("id") Long id) {
         adminService.changeRightsUser(id);
         return ResponseEntity.ok().body("User rights are changed.");
@@ -34,4 +34,8 @@ public class AdminController {
 
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok().body(adminService.getAllUsers());
+    }
 }

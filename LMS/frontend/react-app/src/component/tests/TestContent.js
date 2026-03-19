@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { BASE_URL, TEST } from '../../urls';
 import Question from '../Question';
+import AuthContext from '../context/AuthContext';
 
 const TestContent = (params) => {
     const [timeLeft, setTimeLeft] = useState(null);
     const [test, setTest] = useState([]);
     const { testId } = useParams(); 
+    const { auth } = useContext(AuthContext);
 
     function getTest(id) {
-        axios.get(BASE_URL + TEST + id).then((response) => {
+        axios.get(BASE_URL + TEST + id, {
+            headers: {
+                'Authorization': `Bearer ${auth.token}`
+            }
+        }).then((response) => {
                 console.log(response);
                 setTest(response.data);
             }).catch((error) => {
@@ -39,12 +45,12 @@ const TestContent = (params) => {
             <div className="test-questions">
 
                 
-                {test.questions?.map((question, index) => (
-                    <Question
-                        key={question.id}
-                        question={question}
-                        index={index}
-                    />
+                {test.questions?.map((question, indexQ) => (
+                        <Question
+                            key={question.id}
+                            question={question}
+                            index={indexQ}
+                        />
                 ))}
             </div>
 

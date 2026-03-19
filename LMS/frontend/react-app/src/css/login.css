@@ -1,0 +1,114 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    padding: 15rem;
+}
+
+#theme-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeef2;
+}
+
+.login-title {
+    margin: 0 0 24px 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a2634;
+    text-align: center;
+}
+
+#theme-form input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+#theme-form input:focus {
+    outline: none;
+    border-color: #94a3b8;
+    box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.1);
+}
+
+#theme-form input::placeholder {
+    color: #94a3b8;
+}
+
+#theme-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a2634;
+    border: 1px solid #1a2634;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 16px;
+}
+
+#theme-form button[type="submit"]:hover {
+    background-color: #2d3a4a;
+    border-color: #2d3a4a;
+}
+
+#theme-form button[type="submit"]:active {
+    background-color: #0f1a24;
+    transform: translateY(0);
+}
+
+#theme-form button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
+}
+
+#theme-form button[type="submit"]:focus:not(:focus-visible) {
+    box-shadow: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.text-center a {
+    color: #1a2634;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.text-center a:hover {
+    color: #2d3a4a;
+    text-decoration: underline;
+}
+
+.text-center a:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
+    border-radius: 2px;
+}
+
+/* Focus states for accessibility */
+#theme-form input:focus-visible,
+#theme-form button:focus-visible,
+.text-center a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
+}
