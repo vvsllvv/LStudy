@@ -8,9 +8,7 @@ import com.lms.course_service.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,9 +24,10 @@ public class TestController extends CustomController<Test, TestDto> {
     }
 
     @PostMapping("{id}/attempt")
-    public ResponseEntity<?> confirmAttempt(AttemptDto attemptDto, List<Long> answers) {
+    public ResponseEntity<?> confirmAttempt(@PathVariable("id") Long id,
+                                            @RequestBody AttemptDto attemptDto) {
         try {
-            testService.confirmAttempt(attemptDto, answers);
+            testService.confirmAttempt(id, attemptDto);
             return ResponseEntity.status(HttpStatus.OK).body("Attempt confirmed.");
         } catch (Exception e) {
             log.error(e.getMessage());

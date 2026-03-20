@@ -42,7 +42,7 @@ public class JwtService {
 
     public ResponseDto generateAuthToken(User user) {
         ResponseDto responseDto = new ResponseDto(
-                generateJwtToken(user, 15),
+                generateJwtToken(user, 5),
                 generateJwtToken(user, 60),
                 user.getRole());
 

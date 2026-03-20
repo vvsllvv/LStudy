@@ -36,7 +36,6 @@ public class GroupService {
         Group group = groupRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Group with this id was not found."));
 
-        // исключает пользователей, которые уже в группе?
         List<Long> result = ids.stream()
                 .filter(i -> !group.getUsers().stream().map(u -> u.getId()).toList().contains(i))
                 .collect(Collectors.toList());

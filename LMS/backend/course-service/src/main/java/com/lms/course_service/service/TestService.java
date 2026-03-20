@@ -1,6 +1,5 @@
 package com.lms.course_service.service;
 
-import com.lms.course_service.dto.AnswerDto;
 import com.lms.course_service.dto.AttemptDto;
 import com.lms.course_service.dto.TestDto;
 import com.lms.course_service.entity.Answer;
@@ -8,7 +7,6 @@ import com.lms.course_service.entity.Attempt;
 import com.lms.course_service.entity.Question;
 import com.lms.course_service.entity.Test;
 import com.lms.course_service.exception.NotFoundException;
-import com.lms.course_service.mapper.AttemptMapper;
 import com.lms.course_service.mapper.QuestionMapper;
 import com.lms.course_service.mapper.TestMapper;
 import com.lms.course_service.repository.AnswerRepository;
@@ -31,20 +29,19 @@ public class TestService extends CustomService<Test, TestDto> {
     private final ThemeRepository themeRepository;
     private final QuestionService questionService;
     private final AnswerService answerService;
-    private final AttemptMapper attemptMapper;
     private final AttemptRepository attemptRepository;
     private final AnswerRepository answerRepository;
 
     public TestService(TestRepository testRepository, TestMapper testMapper,
                        QuestionMapper questionMapper, ThemeRepository themeRepository,
-                       QuestionService questionService, AnswerService answerService, AttemptMapper attemptMapper, AttemptRepository attemptRepository, AnswerRepository answerRepository) {
+                       QuestionService questionService, AnswerService answerService,
+                       AttemptRepository attemptRepository, AnswerRepository answerRepository) {
         super(testRepository, testMapper);this.testRepository = testRepository;
         this.testMapper = testMapper;
         this.questionMapper = questionMapper;
         this.themeRepository = themeRepository;
         this.questionService = questionService;
         this.answerService = answerService;
-        this.attemptMapper = attemptMapper;
         this.attemptRepository = attemptRepository;
         this.answerRepository = answerRepository;
     }
@@ -95,11 +92,23 @@ public class TestService extends CustomService<Test, TestDto> {
         return testMapper.toDto(allTests);
     }
 
-    public void confirmAttempt(AttemptDto attemptDto, List<Long> answers) {
-        Attempt attempt = attemptMapper.toEntity(attemptDto);
+    public void confirmAttempt(Long testId, AttemptDto attemptDto) {
+//        Long result = answers.stream().filter(
+//                a -> answerRepository.findById(a).get().getIsRight() == true).count();
 
-        Long score = answers.stream().filter(
-                a -> answerRepository.findById(a).get().getIsRight() == true).count();
+        List<Answer> answerList = attemptDto.answers().stream().map(
+                a -> answerRepository.findById(a)
+                        .orElseThrow(() -> new NotFoundException("Answer not found."))).toList();
+
+        Attempt attempt = Attempt.builder()
+                .test(testRepository.findById(testId).orElseThrow(
+                        () -> new NotFoundException("Test not found exception.")))
+                .timeTaken(attemptDto.timeTaken())
+                .userId(attemptDto.userId())
+                .answers(answerList)
+                .score(answerList.stream().filter(
+                a -> a.getIsRight() == true).count())
+                .build();
 
         attemptRepository.save(attempt);
         log.info("Attempt confirmed.");

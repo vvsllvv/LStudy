@@ -29,7 +29,7 @@ public class Question {
     private Method method;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Answer> answer;
+    private List<Answer> answers;
 
     @ManyToOne
     @JoinColumn(name = "test_id", nullable = false)

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { AUTH, BASE_URL } from '../../urls';
+import '../../css/register.css';
 
 const RegisterUser= () => {
     const [formData, setFormData] = useState({

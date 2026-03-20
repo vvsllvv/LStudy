@@ -49,7 +49,7 @@ public abstract class CustomController <ENTITY, DTO> {
     @GetMapping("/{id}")
     public ResponseEntity<?> read(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(service.read(id));
+            return ResponseEntity.status(HttpStatus.OK).body(service.read(id));
         } catch (Exception e) {
             log.error(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong.");

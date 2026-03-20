@@ -21,7 +21,7 @@ const Question = ({
             </div>
 
             <div className="answers-list">
-                {question.answer?.map((answer) => (
+                {question.answers?.map((answer) => (
                     <label key={answer.id} className="answer-option">
                         <input
                             type="radio"

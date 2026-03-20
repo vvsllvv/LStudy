@@ -5,7 +5,247 @@ body {
     padding: 0;
 }
 
-.modules-container,
+
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modules-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.modules-container > h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a2634;
+    margin: 0 0 24px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #eaeef2;
+    letter-spacing: -0.01em;
+}
+
+.module-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeef2;
+}
+
+.module-card > h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1a2634;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eaeef2;
+}
+
+.module-card > div {
+    margin-left: 16px;
+    padding: 8px 0;
+    border-left: 2px solid #eaeef2;
+    padding-left: 20px;
+    justify-content: center;
+}
+
+.module-card > div:last-of-type {
+    margin-bottom: 16px;
+}
+
+.module-card > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #eef2f6;
+}
+
+.course-link {
+    text-decoration: none;
+    flex: 1;
+}
+
+.course-link h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2d3a4a;
+    transition: color 0.2s ease;
+}
+
+.course-link:hover h4 {
+    color: #1a2634;
+}
+
+.course-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.2);
+    border-radius: 4px;
+}
+
+.delete-btn {
+    padding: 6px 16px;
+    background-color: #ffffff;
+    border: 1px solid #fee2e2;
+    border-radius: 6px;
+    color: #b91c1c;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 80px;
+}
+
+.delete-btn:hover {
+    background-color: #fee2e2;
+    border-color: #b91c1c;
+}
+
+.delete-btn:active {
+    background-color: #fecaca;
+    transform: translateY(0);
+}
+
+.delete-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.2);
+}
+
+.module-card > .delete-btn {
+    margin-top: 16px;
+    width: 200px !important;
+    background-color: #fef2f2;
+    border-color: #fecaca;
+}
+
+
+.module-card > .delete-btn:hover {
+    background-color: #fee2e2;
+}
+
+.create-btn {
+    width: 200px;
+    padding: 8px 20px;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 12px;
+}
+
+.create-btn:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+    color: #0f172a;
+}
+
+.create-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.2);
+}
+
+.create-class-link {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.modules-container > .create-link {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 24px;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.modules-container > .create-link h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.modules-container > .create-link:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.modules-container > .create-link:hover h4 {
+    color: #0f172a;
+}
+
+.modules-container > .create-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.2);
+}
+
+.module-card .create-link {
+    display: inline-block;
+    margin-right: 12px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.2);
+}
+
+button {
+    font-family: inherit;
+}
+
+.module-card .delete-btn,
+.module-card .create-btn {
+    vertical-align: middle;
+}
+
+
+
+.course-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.course-container h2 {
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+    color: #1a2634;
+}
+
+.content-container {
+    border-radius: 8px;
+    padding: 24px;
+    min-height: 200px;
+}
+
+.course-link {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    padding: 0.5rem 3.5rem;
+    color: #000000;
+    font-size: medium;
+}
+
+/* .modules-container,
 .test-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -82,7 +322,7 @@ h2 {
     color: #64748b;
     border: 2px dashed #cbd5e1;
 }
-
+ */
 
 
 
@@ -205,6 +445,10 @@ h2 {
 
 .test-link {
     color: #b16100;
+}
+
+a {
+  decoration: none;
 }
 
 

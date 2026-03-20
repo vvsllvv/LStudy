@@ -105,7 +105,6 @@
     border-radius: 2px;
 }
 
-/* Focus states for accessibility */
 #theme-form input:focus-visible,
 #theme-form button:focus-visible,
 .text-center a:focus-visible {

@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 public record ResponseDto (
         @NotNull String token,
         @NotNull String refreshToken,
-        UserRole role
+        @NotNull UserRole role
 ) {
 
 }

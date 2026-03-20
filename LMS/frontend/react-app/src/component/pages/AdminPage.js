@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from "axios"
 import { BASE_URL, ALL, ADMIN, DELETE, RIGHTS, ROLE } from "../../urls"
 import { useContext, useEffect, useState } from "react";
@@ -150,31 +149,13 @@ const AdminPage = () => {
                     </div>
                 </div>
             ))}
+
+                <div className="text-center">
+                    <p><a href="/register" >Зарегистрировать пользователя</a></p>
+                </div>
         </div>
     )
 
 }
 
 export default AdminPage;
-
-
-
-
-
-                        {/* <form >
-                            <span className="role-edit-container">
-                                <select name="role" value={user.role}  onChange={(e) => handleChange}>
-                                    <option value="ROLE_USER">Пользователь</option>
-                                    <option value="ROLE_MENTOR">Наставник</option>
-                                    <option value="ROLE_ADMIN">Админ</option>
-                                </select>
-                            </span>
-
-                            <button type="submit">Изменить роль</button>
-                        </form> */}
-=======
-
-const AdminPage = () => {
-    
-}
->>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1

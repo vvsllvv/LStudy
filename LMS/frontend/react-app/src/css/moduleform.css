@@ -1,0 +1,100 @@
+.create-module {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 32px 28px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeef2;
+}
+
+.create-module h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a2634;
+    margin: 0 0 28px 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #eaeef2;
+    letter-spacing: -0.01em;
+}
+
+#module-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#module-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+#module-form input {
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #1e293b;
+    background-color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#module-form input:focus {
+    outline: none;
+    border-color: #94a3b8;
+    box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.1);
+}
+
+#module-form input::placeholder {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+#module-form button[type="submit"] {
+    padding: 14px 24px;
+    background-color: #1a2634;
+    border: 1px solid #1a2634;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+
+#module-form button[type="submit"]:hover {
+    background-color: #2d3a4a;
+    border-color: #2d3a4a;
+}
+
+#module-form button[type="submit"]:active {
+    background-color: #0f1a24;
+    transform: translateY(0);
+}
+
+#module-form button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
+}
+
+/* Focus states for accessibility */
+#module-form input:focus-visible,
+#module-form button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
+}
+
+/* Remove default button styles */
+button {
+    font-family: inherit;
+}   

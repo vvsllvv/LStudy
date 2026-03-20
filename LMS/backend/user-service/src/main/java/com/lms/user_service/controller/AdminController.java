@@ -34,21 +34,8 @@ public class AdminController {
 
     }
 
-<<<<<<< HEAD
     @GetMapping("/all")
     public ResponseEntity<?> getUsers() {
         return ResponseEntity.ok().body(adminService.getAllUsers());
     }
-=======
-    @GetMapping("/users")
-    public ResponseEntity<?> getUsers() {
-        return ResponseEntity.ok().body(adminService.getAllUsers());
-    }
-
-//    @GetMapping("/user/{id}")
-//    @PatchMapping("/{id}/role")
-//    public ResponseEntity<?> getUser(@PathVariable("id") Long id) {
-//        return ResponseEntity.ok().body();
-//    }
->>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
 }

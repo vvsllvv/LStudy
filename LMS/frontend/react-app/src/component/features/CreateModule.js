@@ -1,34 +1,23 @@
 import axios from "axios";
 import { BASE_URL, MODULE, CREATE } from "../../urls";
-<<<<<<< HEAD
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from "../context/AuthContext";
+import '../../css/moduleform.css';
 
 const CreateModule = () => {
     const navigate = useNavigate();
     const { auth, logout } = useContext(AuthContext);
-=======
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-const CreateModule = () => {
-    const navigate = useNavigate();
->>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
     const [module, setModule] = useState({
         title: ''
     });
 
     function createModule(id) {
-<<<<<<< HEAD
         axios.post(BASE_URL + MODULE + CREATE, module,
         {
             headers: {
             'Authorization': `Bearer ${auth.token}`
         }})
-=======
-        axios.post(BASE_URL + MODULE + CREATE, module)
->>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
         .then()
         .catch((error) => {
             console.log(error);
@@ -48,7 +37,7 @@ const CreateModule = () => {
 
     return(
         <div className="create-module">
-            <h2>Создание новой главы</h2>
+            <h2>Создание нового модуля</h2>
             <form id="module-form" action={() => createModule()}>
                 <label>
                     Название:

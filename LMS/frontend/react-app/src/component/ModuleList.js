@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import { BASE_URL, MODULE, COURSE, ALL, DELETE } from '../urls';
+import { BASE_URL, MODULE, COURSE, ALL, DELETE, ROLE } from '../urls';
 import AuthContext from './context/AuthContext';
+import RestrictView, { ROLES } from './Role';
 
 const ModuleList = () => {
     const [modules, setModules] = useState([]);
@@ -72,34 +73,40 @@ const ModuleList = () => {
                                 <h4>{course.title}</h4>          
                             </Link>
 
-                                
-                            <button type="submit" className="delete-btn" onClick={() => handleCourseDelete(course.id)}>
-                                Удалить
-                            </button>
+                            <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
+                                <button type="submit" className="delete-btn" onClick={() => handleCourseDelete(course.id)}>
+                                    Удалить
+                                </button>
+                            </RestrictView>
                         </div>      
                         ))
 
-                        
-                    }
-<<<<<<< HEAD
                     
-=======
->>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
-                        <Link to={`/course/${module.id}/create`}>
-                            <h4>создать курс</h4>          
-                        </Link>
+                    }
+                    
+                    <div id='wrapper'>
+                        <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
+                            <Link to={`/course/${module.id}/create`}>
+                                <button className="create-btn">
+                                    <h4 className="create-class-link">Cоздать</h4>
+                                </button>          
+                            </Link>
 
-                        <button type="submit" className="delete-btn" onClick={() => handleModuleDelete(module.id)}>
-                            Удалить
-                        </button>
+                            <button type="submit" className="delete-btn" onClick={() => handleModuleDelete(module.id)}>
+                                Удалить
+                            </button>
+                        </RestrictView>
+                        </div>
                     </div>
                 ))
                 }
             </div>
 
-            <Link to={`/module/create`} className="create-link">
-                <h4>cоздать </h4>          
-            </Link>
+            <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
+                <Link to={`/module/create`} className="create-link">
+                    <h4>cоздать</h4>          
+                </Link>
+            </RestrictView>
         </div>
     )
 };

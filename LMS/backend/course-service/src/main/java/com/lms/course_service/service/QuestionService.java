@@ -63,7 +63,7 @@ public class QuestionService extends CustomService<Question, QuestionDto> {
 
         if (questionDto.answers() != null) {
             List<Answer> newAnswers = answerMapper.toEntity(questionDto.answers());
-            question.getAnswer().addAll(newAnswers);
+            question.getAnswers().addAll(newAnswers);
         }
 
         questionRepository.save(question);

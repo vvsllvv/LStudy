@@ -1,32 +1,33 @@
-// // components/RoleProtectedRoute.js
-// import { Navigate } from 'react-router-dom';
-// import { useContext } from 'react';
-// import AuthContext from '../context/AuthContext';
+import React from 'react';
 
-// const RoleProtectedRoute = ({ 
-//     children, 
-//     allowedRoles = [],
-//     requireAll = false
-// }) => {
-//     const { auth, hasAnyRole, hasAllRoles } = useContext(AuthContext);
+export const ROLES = {
+    ADMIN: 'ROLE_ADMIN',
+    USER: 'ROLE_USER',
+    MENTOR: 'ROLE_MENTOR'
+};
 
-//     if (!auth.token) {
-//         return <Navigate to="/login" />;
-//     }
+const useAuth = () => {
+    const user = {
+        roles: ['ROLE_USER', 'ROLE_MENTOR', 'ROLE_ADMIN']
+    };
+    
+    return {
+        user,
+        hasRole: (role) => user?.roles?.includes(role),
+        hasAnyRole: (roles) => roles.some(role => user?.roles?.includes(role))
+    };
+};
 
-//     if (allowedRoles.length === 0) {
-//         return children;
-//     }
+const RestrictView = ({ children, allowedRoles, userRole }) => {
+    if (!userRole) return null;
+    
+    if (!allowedRoles || allowedRoles.length === 0) {
+        return children;
+    }
 
-//     const hasAccess = requireAll 
-//         ? hasAllRoles(allowedRoles)
-//         : hasAnyRole(allowedRoles);
+    const hasAccess = allowedRoles.includes(userRole);
+    
+    return hasAccess ? children : null;
+};
 
-//     if (!hasAccess) {
-//         return <Navigate to={fallbackPath} />;
-//     }
-
-//     return children;
-// };
-
-// export default RoleProtectedRoute;
+export default RestrictView;

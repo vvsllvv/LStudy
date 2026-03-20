@@ -3,10 +3,8 @@ import { BASE_URL, PARAGRAPH, CREATE } from "../../urls";
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import AuthContext from "../context/AuthContext";
-=======
->>>>>>> e05764a8297ba1dfd94ebaa117e7aed2e3e0b2d1
+import '../../css/paragraph.css';
 
 const CreateParagraoh = () => {
     const navigate = useNavigate();
@@ -56,7 +54,7 @@ const CreateParagraoh = () => {
                         onChange={handleChange}
                         required
                         rows="5"
-                        cols="40"
+                        cols="39"
                     />
                 </label>
 

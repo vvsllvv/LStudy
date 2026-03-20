@@ -10,16 +10,12 @@ import com.lms.user_service.exception.UserAlreadyExistsException;
 import com.lms.user_service.mapper.UserMapper;
 import com.lms.user_service.repository.UserRepository;
 import com.lms.user_service.security.JwtService;
-import com.lms.user_service.security.service.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import javax.naming.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -83,7 +79,3 @@ public class AuthService {
         log.info("User is validated.");
     }
 }
-
-//        Authentication authentication = authenticationManager
-//        .authenticate(new UsernamePasswordAuthenticationToken(loginDto.email(), loginDto.password()));
-//        SecurityContextHolder.getContext().setAuthentication(authentication);

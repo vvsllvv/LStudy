@@ -31,8 +31,4 @@ git clone https://github.com/vvsllvv/LStudy.git
 docker-compose up --build
 ```
 3. Access the Services
-   + **Front-end:** http://localhost:3000
-   + **API-Gateway:** http://localhost:8080
-   + **User-Service:** http://localhost:8081
-   + **Course-Service:** http://localhost:8082
 

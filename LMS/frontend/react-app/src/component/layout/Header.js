@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
+import RestrictView, { ROLES } from '../Role';
 
 function Header(props) {
     
@@ -12,9 +13,12 @@ function Header(props) {
                 <h1 id='header-name'>LSystem</h1>
             </div>
             
+                    
+            <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
                 <Link to={`/admin`} className="admin-link">
                     Управление        
                 </Link>
+            </RestrictView>
 
         </header>
     );
