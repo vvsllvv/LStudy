@@ -4,13 +4,16 @@ import AuthContext from '../context/AuthContext';
 import RestrictView, { ROLES } from '../Role';
 
 function Header(props) {
-    
     const { auth } = useContext(AuthContext);
 
     return (
         <header>
-            <div className='header-content'>
-                <h1 id='header-name'>LSystem</h1>
+            <div className='logo-wrapper'>
+                <Link to={`/main`} className="admin-link">
+                    <div className='header-content'>
+                        <h1 id='header-name'>LSystem</h1>
+                    </div>
+                </Link>
             </div>
             
                     
@@ -20,13 +23,13 @@ function Header(props) {
                 </Link>
             </RestrictView>
 
+            { auth.token && (
+            <Link to="/profile" className="profile-link">
+                👤 {auth.user?.name || 'Профиль'}
+            </Link>)
+            }
         </header>
     );
 }
 
 export default Header;
-
-
-            {/* <Link to={`/profile`} className="profile-link">
-                Профиль        
-            </Link> */}

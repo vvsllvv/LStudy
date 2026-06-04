@@ -7,7 +7,7 @@ public record ThemeDto(
         String title,
         List<ParagraphDto> paragraphs,
         List<TestDto> tests,
-        List<DocumentDto> documents
+        List<DocumentResponseDto> documents
 ) {
 
 }

@@ -1,0 +1,57 @@
+.paragraph-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #ffffff;
+  margin-top: 100px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+.paragraph-container:hover {
+  background: #fefefe;
+}
+
+.paragraph-container h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: #0f172a;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #eef2f6;
+  letter-spacing: -0.02em;
+  transition: border-color 0.2s ease;
+}
+
+.paragraph-container:hover h2 {
+  border-bottom-color: #cbd5e1;
+}
+.text-mass {
+  line-height: 1.6;
+}
+
+.paragraph-content {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #334155;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  transition: color 0.2s ease;
+}
+
+.paragraph-container:hover .paragraph-content {
+  color: #1e293b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

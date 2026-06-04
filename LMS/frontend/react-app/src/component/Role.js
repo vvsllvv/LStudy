@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ROLES = {
     ADMIN: 'ROLE_ADMIN',
     USER: 'ROLE_USER',

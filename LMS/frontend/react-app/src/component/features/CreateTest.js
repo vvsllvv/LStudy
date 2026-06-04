@@ -8,7 +8,7 @@ import '../../css/testform.css';
 
 const CreateTest = () => {
     const navigate = useNavigate();
-    const { auth, logout } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
     const { themeId } = useParams();
     const [test, setTest] = useState({
         title: '',
@@ -146,10 +146,10 @@ const CreateTest = () => {
                 <div className="form-group">
                     <label>Тема теста</label>
                         <input type="text" name="title" value={test.title} onChange={handleTestChange} placeholder="Тема теста"/>
-                    <label></label>
+                    {/* <label></label>
                         <input type="number" name="" value={test.timeout} onChange={handleTestChange} placeholder="Количество минут на тест" min="1" max="3600"/>
                     <label>Тест активен</label>
-                        <input type="checkbox" name="active" value={test.title} onChange={handleTestChange} placeholder="Тема теста"/>
+                        <input type="checkbox" name="active" value={test.title} onChange={handleTestChange} placeholder="Тема теста"/> */}
                 </div>
 
 
@@ -225,7 +225,7 @@ const CreateTest = () => {
                                     <label>
                                     <input type="checkbox" checked={answer.isRight} 
                                     onChange={(e) => handleAnswerChange(qIndex, aIndex, 'isRight', e.target.checked)}/>
-                                    Correct Answer
+                                        Правильный ответ
                                     </label>
                                 </div>
                                 </div>

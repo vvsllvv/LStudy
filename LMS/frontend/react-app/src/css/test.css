@@ -71,7 +71,6 @@
     line-height: 1.5;
 }
 
-/* Answer Options */
 .answer-option {
     display: flex;
     align-items: flex-start;
@@ -120,7 +119,6 @@
     font-weight: 500;
 }
 
-/* Confirm Button */
 .test-confirm {
     display: block;
     width: 100%;

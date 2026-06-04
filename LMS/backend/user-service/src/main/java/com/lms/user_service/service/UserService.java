@@ -5,9 +5,7 @@ import com.lms.user_service.mapper.UserMapper;
 import com.lms.user_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +16,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public ProfileDto showProfile() throws AuthenticationException {
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-
+    public ProfileDto showProfile(String email) throws AuthenticationException {
         return userMapper.toProfileDto(userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Not valid.")));
     }

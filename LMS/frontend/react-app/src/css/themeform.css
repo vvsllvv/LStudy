@@ -1,6 +1,7 @@
 .create-theme {
     max-width: 500px;
     margin: 30px auto;
+    margin-top: 100px;
     padding: 28px;
     background: white;
     border-radius: 8px;

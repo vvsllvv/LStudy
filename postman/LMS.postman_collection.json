@@ -1,0 +1,1170 @@
+{
+  "info": {
+    "_postman_id": "86b9f54d-5cd1-47b3-92fa-923ce26c32cc",
+    "name": "LMS",
+    "description": "Learning Management System platform endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49477229",
+    "_collection_link": "https://go.postman.co/collection/49477229-86b9f54d-5cd1-47b3-92fa-923ce26c32cc?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user-service",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "create user (register)",
+              "request": {
+                "auth": {
+                  "type": "bearer"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"s.andreev@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"firstname\": \"Сергей\",\r\n  \"lastname\": \"Андреев\",\r\n  \"department\": \"VITEBSK\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/auth/registration",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "auth",
+                    "registration"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "user profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwiZW1haWwiOiJpdmFuLnBldHJvdkBjb21wYW55LmNvbSIsInN1YiI6Iml2YW4ucGV0cm92QGNvbXBhbnkuY29tIiwiZXhwIjoxNzcxMjU3ODMzfQ.RUGEN4ciTD04YbFdQ0ulBI3FIsE1448k5m6eNHq83Nh5GMhy5ZU-lh2tJ4-Qo56EpIquDy0CSutPptrFYC4v5w",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/user/profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete user",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQURNSU4iLCJlbWFpbCI6Iml2YW4uaXZhbm92QGNvbXBhbnkuY29tIiwic3ViIjoiaXZhbi5pdmFub3ZAY29tcGFueS5jb20iLCJleHAiOjE3NzAzMzgxNTB9.NXVWnE5r7rdYJvsOfRjK5a-7YYcgLLrEBDLBkfycRmPiic-EvNs7gVHpt2Akf8NPu96ZU8NDOjrs7lgVsvOK0w",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/admin/1/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "admin",
+                    "1",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "disable user",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiTUVOVE9SIiwiZW1haWwiOiJpdmFuLml2YW5vdkBjb21wYW55LmNvbSIsInN1YiI6Iml2YW4uaXZhbm92QGNvbXBhbnkuY29tIiwiZXhwIjoxNzcwMzIxNjk4fQ.N5BDJtt2chEns5v3cKnOzYpUVaapr-DvIEB6OlEZN6iJgTUHzXD7WphT7fGFdpM02CWn46ZMQXeYzjCcobo74g",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/admin/1/rights",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "admin",
+                    "1",
+                    "rights"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "change role",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAY29tcGFueS5jb20iLCJzdWIiOiJpdmFuLnBldHJvdkBjb21wYW55LmNvbSIsImV4cCI6MTc3MDM4ODA0M30.1ZdwFLN1Fwoq9ouM9cbdSScejUKM-hDb0gJqV1BNta-VPOt82bxOlDpWO5upgZAWfgV4wOAzuUb492PQV9V4vQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"role\": \"ROLE_MENTOR\"",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/admin/1/role",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "admin",
+                    "1",
+                    "role"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "all",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTU1ODYxfQ.4hOLUR1nVFqod0bCfFEqHN3oyrs4amNAzb_gDY4UaK67aZi0vMb7LsLg4M4t-rRySw95q4lz2bLb93k-L5kBfw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/admin/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "admin",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "login",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"ivan.petrov@gmail.com\",\r\n  \"password\": \"1234\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "refresh token",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwiZW1haWwiOiJzLmFuZHJlZXZAZ21haWwuY29tIiwic3ViIjoicy5hbmRyZWV2QGdtYWlsLmNvbSIsImV4cCI6MTc4MDU1MDcxMX0.6BdSHdZVyJw4gtC2tMc_hURIcI4Lerxtif_5bzQX-ntb3Xz9P6_xHwo26R8isuKlkvkOb2EwEXOFLTj3qeoU9g\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/auth/refresh",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "auth",
+                    "refresh"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "validate",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwiZW1haWwiOiJzLmFuZHJlZXZAZ21haWwuY29tIiwic3ViIjoicy5hbmRyZWV2QGdtYWlsLmNvbSIsImV4cCI6MTc4MDU1MDcxMX0.6BdSHdZVyJw4gtC2tMc_hURIcI4Lerxtif_5bzQX-ntb3Xz9P6_xHwo26R8isuKlkvkOb2EwEXOFLTj3qeoU9g",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "\"eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNDI3OTA0fQ._CqFqEPwv-lCWaZRouSwhgbbWBSLGIAqYuqU4E_T3ZVbxgmXRnaEuyENR9A5cMzux2oGvRYBqXFkCGKI30juUg\"",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/auth/validate",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "auth",
+                    "validate"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "group",
+          "item": [
+            {
+              "name": "add users to the group",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTQ4MTg1fQ.bGiHeIzhhy1cTIqdvu2UL_qXtqzWvV2mYSxaeuGGP6o7xQtepVt7O3SG4yllrtoqA7JR8gGZ8QAt3p8aqoBWow\"",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[ 7, 10, 3 ]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/group/1/add",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "group",
+                    "1",
+                    "add"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "read the group",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTQ4MTg1fQ.bGiHeIzhhy1cTIqdvu2UL_qXtqzWvV2mYSxaeuGGP6o7xQtepVt7O3SG4yllrtoqA7JR8gGZ8QAt3p8aqoBWow\"",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/group/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "group",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "course-service",
+      "item": [
+        {
+          "name": "course",
+          "item": [
+            {
+              "name": "create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTQ4MTg1fQ.bGiHeIzhhy1cTIqdvu2UL_qXtqzWvV2mYSxaeuGGP6o7xQtepVt7O3SG4yllrtoqA7JR8gGZ8QAt3p8aqoBWow\"",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Общая информация о финансах организации\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/course/2/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "course",
+                    "2",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/course/3/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "course",
+                    "3",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "read",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTQ4MzY3fQ.6JxQWDaLizjeQUEl3JgN1mm5JTnJ5P0MSaNq4fYda96pU7VLV3O5vbKu5UAHokRCTPC30kfHY7nJNPN2CLvgjA\"",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/course/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "course",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Общая информация о производстве организации\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/course/3/update",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "course",
+                    "3",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "theme",
+          "item": [
+            {
+              "name": "read",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/theme/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "theme",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTQ5MDY1fQ.UvOpxsh_8riKhjV_HDUIVViHXAvr2frBi-efYyGHlAXtb6yit3eATdjwFQC_FMt-ZAPiRZHhTCQu5I0d2tiKjw\"",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Финансовые отчёты\",\r\n    \"content\": \"Онсновными документами являются: Финансовая (бухгалтерская) отчетность — это структурированное представление финансового положения и результатов деятельности компании. В соответствии с законодательством и международными стандартами (МСФО), она включает: Бухгалтерский баланс (отчет о финансовом положении) — показывает активы, обязательства и собственный капитал на определенную дату. Отчет о финансовых результатах (прибылях и убытках) — отражает выручку, расходы и чистую прибыль за период. Отчет о движении денежных средств (ОДДС) — показывает поступления и платежи компании. Отчет об изменениях капитала — описывает движение капитала (уставного, резервного, нераспределенной прибыли). Пояснения к бухгалтерскому балансу и отчету о финансовых результатах (в виде текста или таблиц).\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/theme/1/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "theme",
+                    "1",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/theme/1/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "theme",
+                    "1",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/theme/1/update",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "theme",
+                    "1",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "paragraph",
+          "item": [
+            {
+              "name": "read",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/paragraph/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "paragraph",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/paragraph/5/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "paragraph",
+                    "5",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/paragraph/5/update",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "paragraph",
+                    "5",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/paragraph/1/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "paragraph",
+                    "1",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "module",
+          "item": [
+            {
+              "name": "all",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNDQyNzg3fQ.rB4cuFPmhIvkhXiKyBPGxSntvtqZxJd2LQd7S9bv9kt1KLLAWNuMlk8S-PUfDERjRRpT4pnJoTplIy7CS9fLCA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/module/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "module",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/module/1/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "module",
+                    "1",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/module/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "module",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/module/1/update",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "module",
+                    "1",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "read",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/module/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "module",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "document",
+          "item": [
+            {
+              "name": "upoload document",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwMjc1MjQ4fQ.RCd17ZxVvdQ1VVrtlPD6RjW3elMFFIczwqxc_u2yzgnzojsPL9gaDep7eOdphnhyU-CQLm9l0k5MrhGk95mWnA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file",
+                      "description": "Учебные материалы",
+                      "type": "file",
+                      "uuid": "5caa9241-7157-4ec8-b82e-2609fb7e39c4",
+                      "src": "/C:/Users/ASUS/Downloads/Example.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/theme/1/upload",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "theme",
+                    "1",
+                    "upload"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete document",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwMjc1OTQwfQ.AfGBZqyj30x0yHC9AHcIjbHDM4UfLkol4iBIYNZ-A05gML-uBn9Hy2yr0JQizJhrMyGCHxXGBW7wIS71E6eQUg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/doc/35/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "doc",
+                    "35",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "download",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNDUyNDUxfQ.VnyrDDYesz1F5XprrEIhw0KW-EYKvxD4qVVlu4_3v8KD4hJEgN9ffiw2I_6chlBoGLAFlQtXrJJiN8lHEt5Kug",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/doc/7/download",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "doc",
+                    "7",
+                    "download"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "test",
+          "item": [
+            {
+              "name": "create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Тестовый тест №2\",\r\n    \"method\": null,\r\n    \"active\": true,\r\n    \"timeout\": 1200,\r\n    \"questions\": [\r\n        {\r\n            \"description\": \"Что такое менеджмент?\",\r\n            \"method\": \"STRICT\",\r\n            \"answers\": [\r\n                {\r\n                    \"content\": \"Процесс управления организацией\",\r\n                    \"isRight\": true\r\n                },\r\n                {\r\n                    \"content\": \"Только контроль сотрудников\",\r\n                    \"isRight\": false\r\n                },\r\n                {\r\n                    \"content\": \"Исключительно финансовое планирование\",\r\n                    \"isRight\": false\r\n                },\r\n                {\r\n                    \"content\": \"Только стратегическое планирование\",\r\n                    \"isRight\": false\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"description\": \"Кто является основоположником научного управления?\",\r\n            \"method\": \"STRICT\",\r\n            \"answers\": [\r\n                {\r\n                    \"content\": \"Фредерик Тейлор\",\r\n                    \"isRight\": true\r\n                },\r\n                {\r\n                    \"content\": \"Анри Файоль\",\r\n                    \"isRight\": false\r\n                },\r\n                {\r\n                    \"content\": \"Питер Друкер\",\r\n                    \"isRight\": false\r\n                },\r\n                {\r\n                    \"content\": \"Макс Вебер\",\r\n                    \"isRight\": false\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"description\": \"Сколько основных функций управления выделил Анри Файоль?\",\r\n            \"method\": \"STRICT\",\r\n            \"answers\": [\r\n                {\r\n                    \"content\": \"Способность компании погашать краткосрочные обязательства\",\r\n                    \"isRight\": true\r\n                },\r\n                {\r\n                    \"content\": \"Рентабельность компании\",\r\n                    \"isRight\": false\r\n                },\r\n                {\r\n                    \"content\": \"Эффективность использования активов\",\r\n                    \"isRight\": false\r\n                },\r\n                {\r\n                    \"content\": \"Структуру капитала\",\r\n                    \"isRight\": false\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/test/1/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "test",
+                    "1",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "read",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/test/3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "test",
+                    "3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/test/1/delete",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "test",
+                    "1",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/test/1/update",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "test",
+                    "1",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "attempt",
+          "item": [
+            {
+              "name": "create attempt",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"timeTaken\": 0,\r\n    \"testId\": 1,\r\n    \"userId\": 4,\r\n    \"answers\": [ 55, 59, 63 ]\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/test/26/attempt",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "test",
+                    "26",
+                    "attempt"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImVtYWlsIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwic3ViIjoiaXZhbi5wZXRyb3ZAZ21haWwuY29tIiwiZXhwIjoxNzgwNTU1NTAxfQ.9waeZkIxKsejg5SccKlAjE_Nca-QGpc86cCSh1sRChhM0Pyw2JNf8_pg1n_EuQv_kc1ZQbp6Eku3O9nfSZI6pA",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

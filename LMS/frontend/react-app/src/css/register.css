@@ -38,7 +38,7 @@
     color: #b71c1c;
 }
 
-/* Registration Form */
+
 .registration-form {
     display: flex;
     flex-direction: column;
@@ -116,7 +116,7 @@
     margin-top: 2px;
 }
 
-/* Submit Button */
+
 .submit-btn {
     padding: 14px 24px;
     background-color: #1a2634;
@@ -163,7 +163,7 @@ button {
     font-family: inherit;
 }
 
-/* Required field indicator */
+
 .form-group label[for="password"]::after,
 .form-group label[for="department"]::after {
     content: " *";

@@ -139,13 +139,11 @@
     color: #b71c1c;
 }
 
-/* Focus states for accessibility */
 .user-actions button:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
 }
 
-/* Prevent focus ring on click for mouse users */
 .user-actions button:focus:not(:focus-visible) {
     box-shadow: none;
 }

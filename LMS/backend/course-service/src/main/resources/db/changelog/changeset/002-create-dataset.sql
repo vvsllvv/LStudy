@@ -54,18 +54,6 @@ INSERT INTO paragraphs (title, content, theme_id) VALUES
 
 
 
-INSERT INTO documents (title, path, theme_id) VALUES
-('Книга: "Основы менеджмента" М.Х. Мескона', '/documents/management_basics.pdf', 1),
-('Презентация: Введение в менеджмент', '/presentations/intro_management.pptx', 1),
-('Глоссарий терминов', '/documents/glossary.pdf', 1);
-
-INSERT INTO documents (title, path, theme_id) VALUES
-('Учебник: Корпоративные финансы', '/documents/corporate_finance.pdf', 4),
-('Финансовые формулы и расчеты', '/documents/financial_formulas.xlsx', 4),
-('Кейс: Финансовый анализ компании', '/cases/company_analysis.docx', 4);
-
-
-
 INSERT INTO tests (title, is_active, timeout, theme_id) VALUES
 ('Тест по основам менеджмента', true, 1800, 1),
 ('Практическое задание: Кейс-стади', true, 3600, 1);

@@ -1,15 +1,16 @@
 package com.lms.course_service.service;
 
+import com.lms.course_service.config.MinioConfig;
 import com.lms.course_service.dto.DocumentDto;
 import com.lms.course_service.entity.Document;
 import com.lms.course_service.entity.Theme;
 import com.lms.course_service.exception.DocumentUploadException;
 import com.lms.course_service.exception.NotFoundException;
+import com.lms.course_service.repository.DocumentRepository;
 import com.lms.course_service.repository.ThemeRepository;
-import io.minio.BucketExistsArgs;
-import io.minio.MakeBucketArgs;
-import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
+import io.minio.*;
+import io.minio.errors.*;
+import io.minio.http.Method;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.print.Doc;
-
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -27,7 +26,10 @@ public class DocumentService {
 
     private final MinioClient minioClient;
 
+    private final MinioConfig minioConfig;
+
     private final ThemeRepository themeRepository;
+    private final DocumentRepository documentRepository;
 
     @Value("${minio.bucket}")
     private String minioBucket;
@@ -57,12 +59,15 @@ public class DocumentService {
         }
 
         Document document = Document.builder()
-                .title(fileName)
+                .title(documentDto.title())
                 .theme(theme)
                 .path(fileName)
                 .build();
 
+        documentRepository.save(document);
         saveDocument(file, fileName);
+
+        log.info("Document is saved: {}.", document.getTitle());
     }
 
     @SneakyThrows
@@ -96,4 +101,64 @@ public class DocumentService {
         }
     }
 
+    @Transactional
+    public void deleteDocument(Long id) {
+
+        MinioClient minioClient =
+                MinioClient.builder()
+                        .endpoint(minioConfig.getMinioUrl())
+                        .credentials(minioConfig.getMinioAccessKey(), minioConfig.getMinioSecretKey())
+                        .build();
+
+        Document document = documentRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Document was not found."));
+
+        try {
+            minioClient.removeObject(
+                    RemoveObjectArgs.builder()
+                            .bucket(minioBucket)
+                            .object(document.getPath())
+                            .build());
+        }
+        catch (Exception e) {
+            log.error("Document upload failed: {}", e.getMessage());
+            throw new RuntimeException();
+        }
+
+        documentRepository.delete(document);
+        log.info("Document deleted from database: {}", id);
+    }
+
+
+    public String getDocument(Long id) {
+
+        MinioClient minioClient =
+                MinioClient.builder()
+                        .endpoint(minioConfig.getMinioUrl())
+                        .credentials(minioConfig.getMinioAccessKey(), minioConfig.getMinioSecretKey())
+                        .build();
+
+        Document document = documentRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Document was not found."));
+
+        log.info("File is empty? {}", document.getTitle());
+
+        try {
+            String url = minioClient.getPresignedObjectUrl(
+                GetPresignedObjectUrlArgs.builder()
+                    .bucket(minioBucket)
+                    .object(document.getPath())
+                    .method(Method.GET)
+                    .expiry(60 * 60 * 24)
+                    .build());
+
+            log.info("Document upload started: {}", document.getPath());
+
+            return url;
+        }
+        catch (Exception e) {
+            log.error("Document upload failed: {}", e.getMessage());
+                throw new RuntimeException();
+        }
+    }
 }

@@ -7,7 +7,7 @@ import '../../css/moduleform.css';
 
 const CreateModule = () => {
     const navigate = useNavigate();
-    const { auth, logout } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
     const [module, setModule] = useState({
         title: ''
     });
@@ -18,13 +18,15 @@ const CreateModule = () => {
             headers: {
             'Authorization': `Bearer ${auth.token}`
         }})
-        .then()
+        .then(
+            navigate(-1)
+        )
         .catch((error) => {
             console.log(error);
             console.log(error.response);
         });
 
-        navigate(`/module/all`);
+
     }
 
      const handleChange = (e) => {

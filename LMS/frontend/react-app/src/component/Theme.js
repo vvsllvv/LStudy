@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import AuthContext from './context/AuthContext';
 import RestrictView, { ROLES } from './Role';
 import '../css/theme.css';
+import DownloadDoc from './features/DownloadDoc';
+import UploadDoc from './features/UploadDoc';
+import DeleteDoc from './features/DeleteDoc';
 
 const Theme = (params) => {
     const [themes, setThemes] = useState([]);
@@ -57,6 +60,7 @@ const Theme = (params) => {
             }
         );
     }
+    
 
     useEffect(() => {
         getAllCourseThemes(courseId);
@@ -70,7 +74,7 @@ const Theme = (params) => {
                     
                     <h3>{theme.title}</h3>
                     
-                    { theme.paragraphs.length > 0 ? 
+                    {theme.paragraphs.length > 0 ? 
                     (<div className="paragraph-links">
                         {theme.paragraphs.map(paragraph => (     
                             <div key={paragraph.id}>
@@ -92,13 +96,14 @@ const Theme = (params) => {
                     <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
                         <Link to={`/paragraph/${theme.id}/create`} className="create-link">
                             <button className='create-btn'>
-                                <h4>cоздать главу</h4> 
+                                cоздать главу
                             </button>         
                         </Link>
                     </RestrictView>
 
+                        <hr/>
                     
-                    { theme.tests.length > 0 ? 
+                    {theme.tests.length > 0 ? 
                     (<div className="test-links">
                         {theme.tests.map(test => (
                             <div key={test.id}>
@@ -120,10 +125,28 @@ const Theme = (params) => {
                     <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
                         <Link to={`/test/${theme.id}/create`} className="create-link">
                             <button className='create-btn'>
-                                <h4>cоздать тест</h4>
+                                cоздать тест
                             </button>        
                         </Link>
                     </RestrictView>
+
+                        <hr/>
+
+                    {theme.documents?.map(doc => (
+                        <div key={doc.id}>
+                        <span>{doc.title}</span>
+                        <DownloadDoc documentId={doc.id} />
+
+                        <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
+                            <DeleteDoc documentId={doc.id}/>
+                        </RestrictView>
+                        </div>
+                    ))}
+
+                    <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
+                        <UploadDoc themeId={theme.id}/>
+                    </RestrictView>
+
 
 
                 </div>   
@@ -131,10 +154,12 @@ const Theme = (params) => {
             }
 
             <RestrictView allowedRoles={[ROLES.ADMIN, ROLES.MENTOR]} userRole={auth.role}>
-                <Link to={`/theme/${courseId}/create`}>
+                <Link to={`/theme/${courseId}/create`} className='big-create-link'>
                     <h4>создать тему</h4>          
                 </Link>
             </RestrictView>
+
+            
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { BASE_URL, PARAGRAPH } from '../../urls';
 import AuthContext from '../context/AuthContext';
+import '../../css/paragraphPage.css';
 
 const ParagraphPage = (params) => {
     const [paragraph, setParagraph] = useState([]);
@@ -33,7 +34,9 @@ const ParagraphPage = (params) => {
         <div className="paragraph-container">
             <h2>{paragraph.title}</h2>
 
-            <p className="paragraph-content">{paragraph.content}</p>
+            <div className='text-mass'>
+                <p className="paragraph-content">{paragraph.content}</p>
+            </div>
         </div>
   );
 

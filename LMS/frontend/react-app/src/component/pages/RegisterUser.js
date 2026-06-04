@@ -36,7 +36,7 @@ const RegisterUser= () => {
         const newErrors = {};
 
         if (!formData.email) {
-            newErrors.email = 'Email is required';
+            newErrors.email = 'Email - обязательное поле';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Email неправильный';
         }

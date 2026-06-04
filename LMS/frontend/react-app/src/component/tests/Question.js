@@ -6,10 +6,6 @@ const Question = ({
     index
 }) => {
 
-    function finishAttempt() {
-        axios.post();
-    }
-
     return(
          <div className="question-card">
             <div className="question-header">

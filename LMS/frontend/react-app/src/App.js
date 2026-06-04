@@ -14,7 +14,6 @@ import TestContent from './component/tests/TestContent';
 
 import Header from './component/layout/Header';
 
-import './css/style.css'
 import './css/header.css'
 import CreateTest from './component/features/CreateTest';
 import CreateTheme from './component/features/CreateTheme';
@@ -31,7 +30,6 @@ function App() {
           <Header/>
 
           <Routes>
-            
             <Route path="/" element={<LoginPage />}/>
             <Route path="/register" element={<RegisterUser />}/>
 

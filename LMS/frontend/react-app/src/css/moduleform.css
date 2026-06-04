@@ -87,14 +87,13 @@
     box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
 }
 
-/* Focus states for accessibility */
+
 #module-form input:focus-visible,
 #module-form button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(26, 38, 52, 0.3);
 }
 
-/* Remove default button styles */
 button {
     font-family: inherit;
-}   
+}  

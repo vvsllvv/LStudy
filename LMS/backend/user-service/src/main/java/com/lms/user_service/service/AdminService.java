@@ -1,7 +1,6 @@
 package com.lms.user_service.service;
 
 import com.lms.user_service.dto.ProfileDto;
-import com.lms.user_service.dto.UserDto;
 import com.lms.user_service.entity.User;
 import com.lms.user_service.entity.enums.UserRole;
 import com.lms.user_service.mapper.UserMapper;

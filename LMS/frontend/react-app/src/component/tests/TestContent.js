@@ -3,12 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 import { ATTEMPT, BASE_URL, PROFILE, TEST, USER } from '../../urls';
 import AuthContext from '../context/AuthContext';
-import Question from './Question';
 import '../../css/test.css';
 
 const TestContent = (params) => {
     const navigate = useNavigate();
-    const [timeLeft, setTimeLeft] = useState(null);
     const [test, setTest] = useState([]);
     const [user, setUser] = useState([]);
      const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -16,7 +14,7 @@ const TestContent = (params) => {
     const { auth } = useContext(AuthContext);
     const [attempt, setAttempt] = useState({
             testId: testId,
-            userId: 4,
+            userId: 1,
             timeTaken: 0,
             answers: []
         });
@@ -132,12 +130,3 @@ const TestContent = (params) => {
 }
 
 export default TestContent;
-
-
-
-
-// <Question
-//     key={question.id}
-//     question={question}
-//     index={indexQ}
-// />

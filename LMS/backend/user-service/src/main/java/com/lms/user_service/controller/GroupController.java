@@ -1,11 +1,8 @@
 package com.lms.user_service.controller;
 
 import com.lms.user_service.dto.GroupDto;
-import com.lms.user_service.exception.NotFoundException;
 import com.lms.user_service.service.GroupService;
-import com.lms.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +12,6 @@ import java.util.List;
 @RequestMapping("api/group")
 @RequiredArgsConstructor
 public class GroupController {
-    private final UserService userService;
     private final GroupService groupService;
 
     @GetMapping("/{id}")

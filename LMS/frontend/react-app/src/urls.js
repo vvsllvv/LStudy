@@ -1,4 +1,5 @@
 export const BASE_URL = "http://localhost:8080/api";
+// export const BASE_URL = "http://api-gateway:8080/api";
 
 export const USER = "/user/";
 export const AUTH = "/auth/";
@@ -13,6 +14,7 @@ export const COURSE = "/course/";
 export const THEME = "/theme/";
 export const PARAGRAPH = "/paragraph/";
 export const TEST = "/test/";
+export const DOCUMENT = "/doc/";
 export const ATTEMPT = "/attempt"
 
 export const DELETE = "delete";

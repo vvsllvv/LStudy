@@ -9,7 +9,7 @@ import '../../css/paragraph.css';
 const CreateParagraoh = () => {
     const navigate = useNavigate();
     const { themeId } = useParams();
-    const { auth, logout } = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
     const [paragraph, setParagraph] = useState({
         title: '',
         content: ''

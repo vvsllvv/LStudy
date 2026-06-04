@@ -26,7 +26,7 @@ const CreateCourse = () => {
             console.log(error.response);
         });
 
-        navigate(`/module/all`);
+        navigate(`/main`);
     }
 
      const handleChange = (e) => {

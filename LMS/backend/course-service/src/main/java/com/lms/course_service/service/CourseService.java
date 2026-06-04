@@ -62,13 +62,3 @@ public class CourseService extends CustomService<Course, CourseDto> {
         return courseMapper.toDto(allCourses);
     }
 }
-
-
-
-
-//    public List<ThemeDto> readAllChildren(Long id) {
-//        Course course = courseRepository.findById(id).orElseThrow(() -> new NotFoundException("Object not found."));
-//        List<ThemeDto> allThemes = course.getThemes().stream().map(t -> themeMapper.toDto(t)).toList();
-//
-//        return allThemes;
-//    }

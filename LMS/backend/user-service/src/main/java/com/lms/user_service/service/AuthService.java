@@ -20,7 +20,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +27,6 @@ import java.util.List;
 public class AuthService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-    private final AuthenticationManager authenticationManager;
 
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -74,7 +71,9 @@ public class AuthService {
         throw new AuthenticationException("Invalid refresh token");
     }
 
-    public void validateToken(String token) {
+    public void validateToken(String authHeader) {
+        String token = authHeader.substring(7);
+
         jwtService.validateJwtToken(token);
         log.info("User is validated.");
     }

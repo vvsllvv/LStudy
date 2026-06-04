@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,7 +32,7 @@ public class SecurityConfig {
         http
                 .csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/api/auth/**", "/api/user/**", "/api/admin/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/user/**").permitAll()
                         .requestMatchers("/api/group/**").hasAnyAuthority(UserRole.ROLE_MENTOR.name(), UserRole.ROLE_ADMIN.name())
 //                        .requestMatchers("/api/admin/**").hasAnyAuthority(UserRole.ROLE_ADMIN.name())
                         .anyRequest().authenticated())

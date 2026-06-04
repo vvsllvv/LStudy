@@ -4,6 +4,7 @@ import axios from "axios";
 import { BASE_URL, COURSE } from '../../urls';
 import Theme from '../Theme';
 import AuthContext from '../context/AuthContext';
+import "../../css/theme.css";
 
 const CoursePage = (params) => {
     const [course, setCourse] = useState([]);

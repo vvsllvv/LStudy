@@ -97,7 +97,7 @@ public class TestService extends CustomService<Test, TestDto> {
 //                a -> answerRepository.findById(a).get().getIsRight() == true).count();
 
         List<Answer> answerList = attemptDto.answers().stream().map(
-                a -> answerRepository.findById(a)
+               a  ->  answerRepository.findById(a)
                         .orElseThrow(() -> new NotFoundException("Answer not found."))).toList();
 
         Attempt attempt = Attempt.builder()

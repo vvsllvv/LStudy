@@ -1,5 +1,5 @@
 .create-paragraph {
-    margin-top: 100px;
+    margin-top: 4em;
     max-width: 900px;
     margin: 0 auto;
     padding: 32px 24px;
@@ -7,6 +7,10 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border: 1px solid #eaeef2;
+}
+
+.create-paragraph {
+    margin-top: 4em;
 }
 
 .create-paragraph h2 {
@@ -47,7 +51,7 @@
 
 #paragraph-form textarea {
     resize: vertical;
-    min-height: 150px;
+    min-height: 600px;
     line-height: 1.6;
 }
 

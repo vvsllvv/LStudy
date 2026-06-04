@@ -1,6 +1,5 @@
 package com.lms.course_service.entity;
 
-import com.lms.course_service.entity.enums.Method;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
